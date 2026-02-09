@@ -36,10 +36,17 @@ void loop() {
     Serial.println("uncessefull reading");
   }
 
-  Serial.println(acc.acceleration.z);
+  // Serial.println(acc.acceleration.z);
 
   //atualize the ball position
   ball.atualize(acc.acceleration.z);
+
+  // debug info
+  // Serial.println(ball.get_velocity());
+  // // Serial.println(ball.get_acceleration());
+  // Serial.println(ball.get_position());
+  // Serial.println("------------------");
+  // Serial.println(position_to_led(ball.get_position()));
   
   //get the led referent to the current position and light it
   show_unique_led(position_to_led(ball.get_position()), pixels);

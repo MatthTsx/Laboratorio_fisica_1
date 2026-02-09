@@ -3,7 +3,10 @@
 int position_to_led(float position) {
     //given the position of the ball, it finds the led correspondent to it
     float ratio = position/BAR_SIZE;
-    return floor(ratio*NUM_LEDS);
+    int led = floor(ratio*NUM_LEDS);
+    if(led > 59) led = 59;
+    if(led < 0) led = 0;
+    return led;
 }
 
 bool initialize_mpu(mpu_sensor& mpu){
