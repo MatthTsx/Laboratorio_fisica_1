@@ -56,13 +56,13 @@ void loop() {
       mode0(mpu, pixels, ball);
       break;
     case 1:
-      mode1();
+      mode1(mpu, pixels, ball);
       break;
     case 2:
-      mode1();
+      mode2();
       break;
     case 3:
-      mode1();
+      mode3();
       break;
   }
 
