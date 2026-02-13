@@ -63,3 +63,10 @@ void button_class::initialize() {
     }
     pinMode(BUTTON_PIN, INPUT);
 }
+
+void show_unique_led(int led, led_strip& strip, long long color) {
+    //sets the value of a single led and show it
+    strip.clear();
+    strip.setPixelColor(led, color);
+    strip.show();
+}

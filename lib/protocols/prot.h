@@ -19,6 +19,10 @@ const float TIME = 1.0F*DELAY/1000.0F; //the time beetween measurements from the
 const float BAR_SIZE = 1.0F; //size of the bar, in meters
 const float EPSILON = 0.00001F;
 
+const long long RED = 0xFF0000;
+const long long BLUE = 0x0000FF;
+const long long GREEN = 0x00FF00;
+
 using led_strip = Adafruit_NeoPixel;
 using mpu_sensor = Adafruit_MPU6050;
 
@@ -26,6 +30,8 @@ bool initialize_mpu(mpu_sensor& mpu);
 bool initialize_leds(led_strip& pixels);
 bool initialize_serial(HardwareSerial& serial);
 
+
+void show_unique_led(int led, led_strip& strip, long long color);
 int position_to_led(float position);
 
 class button_class {

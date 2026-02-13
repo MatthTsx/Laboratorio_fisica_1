@@ -2,8 +2,6 @@
 
 #include <prot.h>
 
-
-
 class ball_class {
     private:
 
