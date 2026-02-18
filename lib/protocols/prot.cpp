@@ -32,23 +32,37 @@ bool initialize_serial(HardwareSerial& serial){
 }
 
 void button_class::atualize() {
-    int read = analogRead(BUTTON_PIN);
-    if(read < TOLERANCE_ANALOG_READ) {
+    for(int i = 0; i < NUM_READS; i++) {
+        read_buffer(i, analogRead(BUTTON_PIN));
+        delay(DELAY/NUM_READS);
+    }
+    int sum = 0;
+    for(short int i = 0; i < NUM_READS; i++) {
+        sum += buffer[i];
+    }
+    if(sum >= NUM_READS*MAX_ANALOG_READ - TOLERANCE_ANALOG_READ) {
         if(prev == 0) cnt++;
         prev = 1;
     } else {
         prev = 0;
     }
-    delay(DELAY);
+
 }
 
 int button_class::get_mode() {
     return cnt = cnt%NUM_MODES;
 }
 
+void button_class::read_buffer(int position, int value) {
+    buffer[position] = value;
+}
+
 void button_class::initialize() {
-    cnt = 0, prev = 0;
-    pinMode(BUTTON_PIN, INPUT_PULLUP);
+    cnt = 0;
+    for(int i = 0; i < NUM_READS; i++) {
+        buffer[i] = 0;
+    }
+    pinMode(BUTTON_PIN, INPUT);
 }
 
 void show_unique_led(int led, led_strip& strip, long long color) {
