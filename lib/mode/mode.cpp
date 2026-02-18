@@ -71,5 +71,6 @@ void mode3(led_strip& pixels, button_class& btn ){
         for(int i = 0; i < NUM_LEDS; i++) {
             pixels.setPixelColor(i, GREEN);
         }
+        pixels.show();
     }
 }
