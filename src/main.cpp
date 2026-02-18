@@ -49,7 +49,7 @@ void loop() {
       mode2(pixels, button);
       break;
     case 3:
-      mode3();
+      mode3(pixels, button);
       break;
     default:
       break;

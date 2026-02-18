@@ -62,6 +62,14 @@ void mode2(led_strip& pixels, button_class& btn){
                               position_to_led(ball2.get_position()), BLUE);
     }
 }
-void mode3(){
-    //This mode should be all the balls (just the led strip fully colored)
+
+void mode3(led_strip& pixels, button_class& btn ){
+    //This mode shows all of the LEDs turned ON
+    while(btn.get_mode() == 3) {
+        btn.atualize();
+        pixels.clear();
+        for(int i = 0; i < NUM_LEDS; i++) {
+            pixels.setPixelColor(i, GREEN);
+        }
+    }
 }

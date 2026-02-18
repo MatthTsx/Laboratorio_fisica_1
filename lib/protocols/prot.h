@@ -9,8 +9,6 @@ const int DELAY = 20; //the delay beetween measures of the sensor, in ms
 const int LED_PIN = 13; //the pin of the led in the arduino
 const int NUM_LEDS = 60; // the number of leds
 const int BUTTON_PIN = A0; // the pin of the button
-const int NUM_READS = 20; //num reads must divide delay
-const int MAX_ANALOG_READ = 1023; // maximum value of the analog read
 const int TOLERANCE_ANALOG_READ = 10; //tolerance to the analog read
 const int NUM_MODES = 4 - 1;
 
@@ -38,7 +36,6 @@ int position_to_led(float position);
 class button_class {
     private:
     int cnt, prev;
-    int buffer[NUM_READS];
 
     public:
     void initialize();
