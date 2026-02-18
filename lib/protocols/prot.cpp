@@ -4,7 +4,7 @@ int position_to_led(float position) {
     //given the position of the ball, it finds the led correspondent to it
     float ratio = position/BAR_SIZE;
     int led = floor(ratio*NUM_LEDS);
-    if(led > 59) led = 59;
+    if(led > NUM_LEDS-1) led = NUM_LEDS-1;
     if(led < 0) led = 0;
     return led;
 }
@@ -50,7 +50,7 @@ void button_class::atualize() {
 }
 
 int button_class::get_mode() {
-    return cnt = cnt%NUM_MODES;
+    return cnt%NUM_MODES;
 }
 
 void button_class::read_buffer(int position, int value) {
